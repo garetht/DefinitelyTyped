@@ -148,7 +148,7 @@ export interface ForStatement extends Node {
 export interface FunctionDeclaration extends Node {
     type: "FunctionDeclaration";
     id: Identifier;
-    params: Pattern[];
+    params: LVal[];
     body: BlockStatement;
     generator: boolean;
     async: boolean;
@@ -159,7 +159,7 @@ export interface FunctionDeclaration extends Node {
 export interface FunctionExpression extends Node {
     type: "FunctionExpression";
     id: Identifier;
-    params: Pattern[];
+    params: LVal[];
     body: BlockStatement;
     generator: boolean;
     async: boolean;
@@ -366,7 +366,7 @@ export interface ArrayPattern extends Node {
 export interface ArrowFunctionExpression extends Node {
     type: "ArrowFunctionExpression";
     id: Identifier;
-    params: Pattern[];
+    params: LVal[];
     body: BlockStatement | Expression;
     generator: boolean;
     async: boolean;
@@ -925,8 +925,8 @@ export function expressionStatement(expression?: Expression): ExpressionStatemen
 export function file(program?: Program, comments?: Comment[], tokens?: any[]): File;
 export function forInStatement(left?: VariableDeclaration | LVal, right?: Expression, body?: Statement): ForInStatement;
 export function forStatement(init?: VariableDeclaration | Expression, test?: Expression, update?: Expression, body?: Statement): ForStatement;
-export function functionDeclaration(id?: Identifier, params?: Pattern[], body?: BlockStatement, generator?: boolean, async?: boolean): FunctionDeclaration;
-export function functionExpression(id?: Identifier, params?: Pattern[], body?: BlockStatement, generator?: boolean, async?: boolean): FunctionExpression;
+export function functionDeclaration(id?: Identifier, params?: LVal[], body?: BlockStatement, generator?: boolean, async?: boolean): FunctionDeclaration;
+export function functionExpression(id?: Identifier, params?: LVal[], body?: BlockStatement, generator?: boolean, async?: boolean): FunctionExpression;
 export function identifier(name?: string): Identifier;
 export function ifStatement(test?: Expression, consequent?: Statement, alternate?: Statement): IfStatement;
 export function labeledStatement(label?: Identifier, body?: Statement): LabeledStatement;
@@ -958,7 +958,7 @@ export function whileStatement(test?: Expression, body?: BlockStatement | Statem
 export function withStatement(object?: Expression, body?: BlockStatement | Statement): WithStatement;
 export function assignmentPattern(left?: Identifier, right?: Expression): AssignmentPattern;
 export function arrayPattern(elements?: Array<Pattern>, typeAnnotation?: TypeAnnotation): ArrayPattern;
-export function arrowFunctionExpression(params?: Pattern[], body?: BlockStatement | Expression, async?: boolean): ArrowFunctionExpression;
+export function arrowFunctionExpression(params?: LVal[], body?: BlockStatement | Expression, async?: boolean): ArrowFunctionExpression;
 export function classBody(body?: Array<ClassMethod | ClassProperty>): ClassBody;
 export function classDeclaration(id?: Identifier, superClass?: Expression, body?: ClassBody, decorators?: Decorator[]): ClassDeclaration;
 export function classExpression(id?: Identifier, superClass?: Expression, body?: ClassBody, decorators?: Decorator[]): ClassExpression;
